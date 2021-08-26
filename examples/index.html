@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vuex test</title>
+  </head>
+  <body>
+    <p></p>
+    <button class="decrement">-</button>
+    <button class="increment">+</button>
+    <script type="module">
+      import { store } from './index.js'
+      const p = document.querySelector('p')
+      store.subscribe(() => {
+        p.textContent = store.state.counter.count
+      })
+      p.textContent = store.state.counter.count
+      document.querySelector('.decrement').addEventListener('click', () => {
+        store.dispatch('decrement')
+      })
+      document.querySelector('.increment').addEventListener('click', () => {
+        store.dispatch('incrementAsync')
+      })
+    </script>
+  </body>
+</html>

@@ -2,5 +2,9 @@
   "name": "mini-vuex4",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@vue/reactivity": "^3.2.6"
+  }
 }

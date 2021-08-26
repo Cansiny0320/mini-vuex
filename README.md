@@ -1,3 +1,9 @@
-# mini-vuex4
+# mini-vuex
 
-学习 vuex4.x 的源码仓库
+简化版vuex 用于学习 vuex 源码
+
+- [x] state
+- [x] getter
+- [x] mutation
+- [x] action
+- [x] module
