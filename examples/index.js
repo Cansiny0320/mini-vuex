@@ -1,5 +1,5 @@
 import { createStore } from '../src/store.js'
-
+import { logger } from '../src/plugins/logger.js'
 const state = {
   count: 0,
 }
@@ -44,4 +44,5 @@ export const store = createStore({
   modules: {
     counter,
   },
+  plugins: [logger],
 })

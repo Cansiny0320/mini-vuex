@@ -7,3 +7,4 @@
 - [x] mutation
 - [x] action
 - [x] module
+- [x] plugin
