@@ -14,7 +14,7 @@ export default class ModuleCollection {
   register(path, rawModule) {
     const newModule = new Module(rawModule)
     if (path.length === 0) {
-      // root 定义为 rawModule
+      // root 为父 module
       this.root = newModule
     } else {
       const parent = this.get(path.slice(0, -1))

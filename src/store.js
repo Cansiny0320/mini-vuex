@@ -12,8 +12,10 @@ export class Store {
     this._actions = Object.create(null)
     this._mutations = Object.create(null)
     this.getters = Object.create(null)
+
     // 收集 modules
     this._modules = new ModuleCollection(options)
+
     // 绑定commit 和 dispatch 到自身
     const store = this
     const { dispatch, commit } = this
@@ -26,11 +28,12 @@ export class Store {
 
     const state = this._modules.root.state
 
-    // 安装模块
+    // 安装 module
     installModule(this, state, [], this._modules.root)
 
-    // 数据响应式
+    // 初始化 state
     resetStoreState(this, state)
+
     // 应用插件
     plugins.forEach(plugin => plugin(this))
   }
