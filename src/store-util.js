@@ -31,7 +31,7 @@ export function installModule(store, rootState, path, module) {
             dispatch: store.dispatch,
             commit: store.commit,
             getters: store.getters,
-            state: store.state,
+            state: getNestedState(store.state, path),
           },
           payload
         )
