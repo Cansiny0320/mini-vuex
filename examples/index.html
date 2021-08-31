@@ -11,12 +11,13 @@
     <button class="decrement">-</button>
     <button class="increment">+</button>
     <script type="module">
+      import { effect } from '../node_modules/@vue/reactivity/dist/reactivity.esm-browser.js'
       import { store } from './index.js'
       const p = document.querySelector('p')
-      store.subscribe(() => {
+      effect(() => {
         p.textContent = store.state.counter.count
       })
-      p.textContent = store.state.counter.count
+
       document.querySelector('.decrement').addEventListener('click', () => {
         store.dispatch('decrement')
       })
