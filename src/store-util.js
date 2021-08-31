@@ -17,7 +17,8 @@ export function installModule(store, rootState, path, module) {
     Object.keys(module._rawModule.mutations).forEach(key => {
       const mutation = module._rawModule.mutations[key]
       store._mutations[key] = payload =>
-        mutation.call(store, module.state, payload)
+        // 惰性获取 state
+        mutation.call(store, getNestedState(store.state, path), payload)
     })
   }
   if (module._rawModule.actions) {
@@ -44,7 +45,9 @@ export function installModule(store, rootState, path, module) {
   if (module._rawModule.getters) {
     Object.keys(module._rawModule.getters).forEach(key => {
       const getter = module._rawModule.getters[key]
-      store.getters[key] = () => getter(store.state, store.getters)
+      store.getters[key] = () =>
+        // 惰性获取 state
+        getter(getNestedState(store.state, path), store.getters)
     })
   }
   Object.keys(module._children).forEach(key =>
